@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ht1jcsqstonu"]
+
+[ext_resource type="Script" path="res://Elements/Player/player.gd" id="1_fhbn3"]
+[ext_resource type="Texture2D" uid="uid://dbtt84ffxpngi" path="res://icon.svg" id="2_j5wed"]
+[ext_resource type="PackedScene" uid="uid://ctxtanaq6i2ef" path="res://Elements/Projectile/projectile.tscn" id="2_xw088"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd3r8"]
+size = Vector2(48, 48)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(576, 320)
+script = ExtResource("1_fhbn3")
+projectile = ExtResource("2_xw088")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("2_j5wed")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nd3r8")
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="RegenTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://l3foyxwvi8f3"]
+
+[ext_resource type="Script" path="res://Model/Enemy.gd" id="1_e50fb"]
+
+[resource]
+script = ExtResource("1_e50fb")
+name = "melee_weak"
+speed = 200.0
+health = 20.0
+damage = 10.0
+color = Color(1, 0, 0, 1)
+xp = 2.0

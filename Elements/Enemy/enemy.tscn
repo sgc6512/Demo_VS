@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://02jk113eaw4w"]
+
+[ext_resource type="Script" path="res://Elements/Enemy/enemy.gd" id="1_jcek8"]
+[ext_resource type="Resource" uid="uid://l3foyxwvi8f3" path="res://Data/Enemies/melee_weak.tres" id="2_aq4pg"]
+[ext_resource type="Texture2D" uid="uid://dbtt84ffxpngi" path="res://icon.svg" id="3_ssi4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tay14"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="Area2D" groups=["enemy_group"]]
+process_mode = 1
+script = ExtResource("1_jcek8")
+enemy = ExtResource("2_aq4pg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_ssi4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tay14")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

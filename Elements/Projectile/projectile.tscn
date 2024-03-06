@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctxtanaq6i2ef"]
+
+[ext_resource type="Script" path="res://Elements/Projectile/projectile.gd" id="1_4bnbb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ieefn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvgmn"]
+size = Vector2(8, 8)
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_4bnbb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8.00006, 7.99998)
+texture = SubResource("CanvasTexture_ieefn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uvgmn")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

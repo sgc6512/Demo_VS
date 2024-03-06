@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwaexcqdkvekb"]
+
+[ext_resource type="Script" path="res://UI/Level Up Dialog/level_up_dialog.gd" id="1_m3psw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n8guo"]
+size = Vector2(250, 250)
+
+[node name="LevelUpDialog" type="PanelContainer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m3psw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Choose 1 Upgrade"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Option 1"
+icon = SubResource("PlaceholderTexture2D_n8guo")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Option 2"
+icon = SubResource("PlaceholderTexture2D_n8guo")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Button3" type="Button" parent="VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Option 3"
+icon = SubResource("PlaceholderTexture2D_n8guo")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Button3" to="." method="_on_button_3_pressed"]

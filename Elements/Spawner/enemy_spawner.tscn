@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c42w4ac6l57kj"]
+
+[ext_resource type="Script" path="res://Elements/Spawner/enemy_spawner.gd" id="1_78gbq"]
+[ext_resource type="PackedScene" uid="uid://02jk113eaw4w" path="res://Elements/Enemy/enemy.tscn" id="2_mutvd"]
+[ext_resource type="Resource" uid="uid://c05w85h360vnh" path="res://Data/all_enemies.tres" id="3_jwebe"]
+
+[sub_resource type="Curve2D" id="Curve2D_yji5w"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1152, 648, 0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1152, 0)
+}
+point_count = 5
+
+[node name="EnemySpawner" type="Path2D"]
+curve = SubResource("Curve2D_yji5w")
+script = ExtResource("1_78gbq")
+enemy_scene = ExtResource("2_mutvd")
+all_enemies = ExtResource("3_jwebe")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1152, 0)
+rotation = 1.5708
+
+[node name="_Timer_64542" type="Timer" parent="PathFollow2D"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
